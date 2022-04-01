@@ -46,10 +46,42 @@ class _HomeState extends State<Home> {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Row(
-                    children: [
-                      
-                    ],
+                  SizedBox(
+                    height: 125,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25,
+                    ),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            "LOG IN",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 180,
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            "SIGN UP",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
