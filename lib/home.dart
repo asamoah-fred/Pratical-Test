@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromRGBO(23, 134, 215, 83),
       ),
       body: Container(
         child: Column(
@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
             Container(
               height: 300,
               width: 400,
-              color: Colors.blueAccent,
+              color: Color.fromRGBO(23, 134, 215, 83),
               child: Column(
                 children: [
                   SizedBox(
@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                           child: Text(
                             "LOG IN",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.white70,
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
                           child: Text(
                             "SIGN UP",
                             style: TextStyle(
-                              color: Colors.grey,
+                              color: Colors.white54,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
