@@ -28,7 +28,7 @@ class CustomContainer extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
-              fontWeight: FontWeight.w500,
+              // fontWeight: FontWeight.w500,
             ),
           ),
           SizedBox(
@@ -45,7 +45,7 @@ class CustomContainer extends StatelessWidget {
                   child: Text(
                     "LOG IN",
                     style: TextStyle(
-                      color: Colors.white70,
+                      color: Colors.white,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
