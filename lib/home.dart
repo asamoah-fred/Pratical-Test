@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: <Widget>[
             CustomContainer(),
-            TextFormField(),
+            // TextFormField(),
           ],
         ),
       ),
