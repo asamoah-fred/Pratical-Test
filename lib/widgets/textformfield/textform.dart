@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:practical_test/widgets/textformfield/textform_data.dart';
+import 'package:practical_test/widgets/textformfield/textform_list.dart';
 
 class TextForm extends StatelessWidget {
-  const TextForm({Key? key}) : super(key: key);
+  const TextForm({required this.textFieldForm, Key? key}) : super(key: key);
+  final TextFormData textFieldForm;
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +16,16 @@ class TextForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextFormField(
+            obscureText: textFieldForm.obscure,
             decoration: InputDecoration(
-              hintText: 'Email',
+              hintText: textFieldForm.hintText,
               hintStyle: TextStyle(
                 color: Colors.grey,
               ),
               fillColor: Colors.white54,
               filled: true,
             ),
-            validator: (value) {},
+            validator: textFieldForm.Validator,
           ),
         ],
       ),
