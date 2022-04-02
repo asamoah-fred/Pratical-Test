@@ -26,6 +26,9 @@ class _HomeState extends State<Home> {
         child: Column(
           children: <Widget>[
             CustomContainer(),
+            SizedBox(
+              height: 35,
+            ),
             TextForm(
               textFieldForm: TextFormData(
                 hintText: 'Email',
@@ -43,6 +46,23 @@ class _HomeState extends State<Home> {
                 },
               ),
             ),
+            // TextForm(
+            //   textFieldForm: TextFormData(
+            //     hintText: 'Password',
+            //     obscure: false,
+            //     Validator: (String? value) {
+            //       if (value == null || value.trim().length == 0) {
+            //         return "Field is required";
+            //       }
+            //       if (!RegExp(
+            //               r"^\w+([\.\-\+]?\w*)*@\w+([\.-]?\w+)*(\.\w{2,3})+$")
+            //           .hasMatch(value)) {
+            //         return "Please Enter valid Email";
+            //       }
+            //       return null;
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),
