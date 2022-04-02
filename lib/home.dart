@@ -62,6 +62,16 @@ class _HomeState extends State<Home> {
                 },
               ),
             ),
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              'Forget your password?',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 15,
+              ),
+            ),
           ],
         ),
       ),
