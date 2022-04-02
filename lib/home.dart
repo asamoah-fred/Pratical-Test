@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:practical_test/widgets/container.dart';
+import 'package:practical_test/widgets/textformfield/textform.dart';
+import 'package:practical_test/widgets/textformfield/textform_data.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -24,7 +26,23 @@ class _HomeState extends State<Home> {
         child: Column(
           children: <Widget>[
             CustomContainer(),
-            // TextFormField(),
+            TextForm(
+              textFieldForm: TextFormData(
+                hintText: 'Email',
+                obscure: false,
+                Validator: (String? value) {
+                  if (value == null || value.trim().length == 0) {
+                    return "Field is required";
+                  }
+                  if (!RegExp(
+                          r"^\w+([\.\-\+]?\w*)*@\w+([\.-]?\w+)*(\.\w{2,3})+$")
+                      .hasMatch(value)) {
+                    return "Please Enter valid Email";
+                  }
+                  return null;
+                },
+              ),
+            ),
           ],
         ),
       ),
