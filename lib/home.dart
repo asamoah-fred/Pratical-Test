@@ -19,7 +19,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,9 +60,11 @@ class _HomeState extends State<Home> {
                     if (value == null || value.trim().length == 0) {
                       return "Field is required";
                     }
-                    if (!RegExp(r"/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/")
+                    if (!RegExp(
+                            r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")
                         .hasMatch(value)) {
-                      return "Password should have at least";
+                      return """ Password should not be less than 8 and
+  at least 1 Uppercase and numeric character""";
                     }
                     return null;
                   },
