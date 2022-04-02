@@ -46,6 +46,22 @@ class _HomeState extends State<Home> {
                 },
               ),
             ),
+            TextForm(
+              textFieldForm: TextFormData(
+                hintText: 'Password',
+                obscure: true,
+                Validator: (String? value) {
+                  if (value == null || value.trim().length == 0) {
+                    return "Field is required";
+                  }
+                  if (!RegExp(r"/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/")
+                      .hasMatch(value)) {
+                    return "Password should have at least";
+                  }
+                  return null;
+                },
+              ),
+            ),
           ],
         ),
       ),
