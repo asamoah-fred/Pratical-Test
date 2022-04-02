@@ -10,7 +10,7 @@ class CustomContainer extends StatelessWidget {
     return Container(
       height: 300,
       width: 400,
-      color: Color.fromRGBO(23, 134, 215, 83),
+      color: Colors.blueAccent,
       child: Column(
         children: [
           SizedBox(
