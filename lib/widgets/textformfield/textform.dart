@@ -10,25 +10,30 @@ class TextForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextFormField(
-            obscureText: textFieldForm.obscure,
-            decoration: InputDecoration(
-              hintText: textFieldForm.hintText,
-              hintStyle: TextStyle(
-                color: Colors.grey,
-              ),
-              fillColor: Colors.white54,
-              filled: true,
-            ),
-            validator: textFieldForm.Validator,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30,
           ),
-        ],
-      ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              obscureText: textFieldForm.obscure,
+              decoration: InputDecoration(
+                hintText: textFieldForm.hintText,
+                hintStyle: TextStyle(
+                  color: Colors.grey,
+                ),
+                fillColor: Colors.white54,
+                filled: true,
+              ),
+              validator: textFieldForm.Validator,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
