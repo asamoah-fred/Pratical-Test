@@ -9,14 +9,14 @@ import 'package:practical_test/widgets/container.dart';
 import 'package:practical_test/widgets/textformfield/textform.dart';
 import 'package:practical_test/widgets/textformfield/textform_data.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override

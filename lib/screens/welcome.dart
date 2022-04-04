@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'login_page.dart';
 import 'dart:async';
 
 class WelcomeScreen extends StatefulWidget {
@@ -14,10 +14,10 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
-    super.initState(); 
+    super.initState();
     Future.delayed(Duration(seconds: 3), () {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
     });
   }
 
