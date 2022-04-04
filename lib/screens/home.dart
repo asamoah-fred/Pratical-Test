@@ -57,14 +57,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   hintText: 'Password',
                   obscure: true,
                   Validator: (String? value) {
-                    if (value == null || value.trim().length == 0) {
+                    if (value == null || value.isEmpty) {
                       return "Field is required";
                     }
                     if (!RegExp(
                             r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")
                         .hasMatch(value)) {
-                      return """ Password should not be less than 8 and
-  at least 1 Uppercase and numeric character""";
+                      return """ Password should not be less than 8 and should
+  have at least 1 Uppercase and numeric character""";
                     }
                     return null;
                   },
