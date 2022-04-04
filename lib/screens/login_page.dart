@@ -1,13 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:practical_test/widgets/button/button.dart';
 import 'package:practical_test/widgets/button/button_data.dart';
-import 'package:practical_test/widgets/container.dart';
+import 'package:practical_test/widgets/image_card.dart';
 import 'package:practical_test/widgets/textformfield/textform.dart';
 import 'package:practical_test/widgets/textformfield/textform_data.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,6 +21,31 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
+  String? username, password, message;
+
+  Future<http.Response> _login(
+      {required String username, required String password}) async {
+    final http.Response response = await http.post(
+      Uri.parse(
+        'https://testbox-nellys-coin.ejaraapis.xyz/api/v1/auth/login',
+      ),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'api-key': '838adf51aa',
+        'client-id': 'jL]riHjAgbUZHofblIPigVgq1',
+      },
+      body: jsonEncode(
+        <String, String>{
+          'log': '$username',
+          'password': '$password',
+        },
+      ),
+    );
+    return response.statusCode == 200
+        ? http.Response(response.body, 200)
+        : http.Response(response.body, response.statusCode);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +59,14 @@ class _LoginPageState extends State<LoginPage> {
           key: _formkey,
           child: Column(
             children: <Widget>[
-              CustomContainer(),
+              CustomImageCard(),
               SizedBox(
                 height: 35,
               ),
               TextForm(
+                onChanged: (value) {
+                  username = value;
+                },
                 textFieldForm: TextFormData(
                   hintText: 'Email',
                   obscure: false,
@@ -43,16 +74,14 @@ class _LoginPageState extends State<LoginPage> {
                     if (value == null || value.trim().length == 0) {
                       return "Field is required";
                     }
-                    if (!RegExp(
-                            r"^\w+([\.\-\+]?\w*)*@\w+([\.-]?\w+)*(\.\w{2,3})+$")
-                        .hasMatch(value)) {
-                      return "Please Enter valid Email";
-                    }
                     return null;
                   },
                 ),
               ),
               TextForm(
+                onChanged: (value) {
+                  password = value;
+                },
                 textFieldForm: TextFormData(
                   hintText: 'Password',
                   obscure: true,
@@ -61,10 +90,11 @@ class _LoginPageState extends State<LoginPage> {
                       return "Field is required";
                     }
                     if (!RegExp(
-                            r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")
+                            r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$^#!%*?&])[A-Za-z\d@$!#%*?^&]{8,}$")
                         .hasMatch(value)) {
                       return """ Password should not be less than 8 and should
-  have at least 1 Uppercase and numeric character""";
+  have at least 1 Uppercase, numeric and special 
+  characters""";
                     }
                     return null;
                   },
@@ -84,9 +114,15 @@ class _LoginPageState extends State<LoginPage> {
                 height: 25,
               ),
               GestureDetector(
-                onTap: () {
+                onTap: () async {
                   if (_formkey.currentState != null &&
-                      _formkey.currentState!.validate()) {}
+                      _formkey.currentState!.validate()) {
+                    final http.Response response =
+                        await _login(username: username!, password: password!);
+                    setState(() {
+                      message = jsonDecode(response.body)['message'];
+                    });
+                  }
                 },
                 child: Button(
                   button: ButtonData(
@@ -94,6 +130,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(message ?? ''),
             ],
           ),
         ),

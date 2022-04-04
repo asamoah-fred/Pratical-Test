@@ -5,8 +5,11 @@ import 'package:practical_test/widgets/textformfield/textform_data.dart';
 import 'package:practical_test/widgets/textformfield/textform_list.dart';
 
 class TextForm extends StatelessWidget {
-  const TextForm({required this.textFieldForm, Key? key}) : super(key: key);
+  const TextForm(
+      {required this.textFieldForm, required this.onChanged, Key? key})
+      : super(key: key);
   final TextFormData textFieldForm;
+  final ValueChanged<String>? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,7 @@ class TextForm extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              onChanged: onChanged,
               obscureText: textFieldForm.obscure,
               decoration: InputDecoration(
                 hintText: textFieldForm.hintText,
